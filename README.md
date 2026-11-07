@@ -30,7 +30,7 @@
 
 ## Запуск
 
-Нужен Python 3.10 или новее.
+Нужен Python 3.12 или новее.
 
 ```bash
 python -m venv .venv
