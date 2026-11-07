@@ -1,0 +1,457 @@
+[
+  {
+    "id": "r-j01",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-11T10:00:00Z",
+    "profile": {
+      "email": "judge_01@example.com",
+      "lastName": "Судья01",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-j02",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-12T10:00:00Z",
+    "profile": {
+      "email": "judge_02@example.com",
+      "lastName": "Судья02",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-j03",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-13T10:00:00Z",
+    "profile": {
+      "email": "judge_03@example.com",
+      "lastName": "Судья03",
+      "firstName": "Тест",
+      "country": "Армения",
+      "city": "Город",
+      "position": "Юрист",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s1",
+      "2027-03-13-s2",
+      "2027-03-13-s4"
+    ]
+  },
+  {
+    "id": "r-j04",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-14T10:00:00Z",
+    "profile": {
+      "email": "judge_04@example.com",
+      "lastName": "Судья04",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Юрист",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2"
+    ]
+  },
+  {
+    "id": "r-j05",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-15T10:00:00Z",
+    "profile": {
+      "email": "judge_05@example.com",
+      "lastName": "Судья05",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Собственник бизнеса",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j06",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-16T10:00:00Z",
+    "profile": {
+      "email": "judge_06@example.com",
+      "lastName": "Судья06",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Юрист",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j07",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-17T10:00:00Z",
+    "profile": {
+      "email": "judge_07@example.com",
+      "lastName": "Судья07",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Собственник бизнеса",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2"
+    ]
+  },
+  {
+    "id": "r-j08",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-18T10:00:00Z",
+    "profile": {
+      "email": "judge_08@example.com",
+      "lastName": "Судья08",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-j09",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-19T10:00:00Z",
+    "profile": {
+      "email": "judge_09@example.com",
+      "lastName": "Судья09",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Собственник бизнеса",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j10",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-20T10:00:00Z",
+    "profile": {
+      "email": "judge_10@example.com",
+      "lastName": "Судья10",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s1",
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j11",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-21T10:00:00Z",
+    "profile": {
+      "email": "judge_11@example.com",
+      "lastName": "Судья11",
+      "firstName": "Тест",
+      "country": "Армения",
+      "city": "Город",
+      "position": "Менеджер",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s3",
+      "2027-03-13-s4",
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j12",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-22T10:00:00Z",
+    "profile": {
+      "email": "judge_12@example.com",
+      "lastName": "Судья12",
+      "firstName": "Тест",
+      "country": "Беларусь",
+      "city": "Город",
+      "position": "Собственник бизнеса",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s3",
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j13",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-23T10:00:00Z",
+    "profile": {
+      "email": "judge_13@example.com",
+      "lastName": "Судья13",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город",
+      "position": "Менеджер",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2"
+    ]
+  },
+  {
+    "id": "r-j14",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-24T10:00:00Z",
+    "profile": {
+      "email": "judge_14@example.com",
+      "lastName": "Судья14",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-j15",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-10T10:00:00Z",
+    "profile": {
+      "email": "judge_15@example.com",
+      "lastName": "Судья15",
+      "firstName": "Тест",
+      "country": "Армения",
+      "city": "Город",
+      "position": "Собственник бизнеса",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s4",
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j16",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-11T10:00:00Z",
+    "profile": {
+      "email": "judge_16@example.com",
+      "lastName": "Судья16",
+      "firstName": "Тест",
+      "country": "Армения",
+      "city": "Город",
+      "position": "Руководитель отдела",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-j17",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-12T10:00:00Z",
+    "profile": {
+      "email": "judge_17@example.com",
+      "lastName": "Судья17",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Менеджер",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s5"
+    ]
+  },
+  {
+    "id": "r-j18",
+    "competitionId": "c-classic-2027-03",
+    "role": "Voter",
+    "status": "submitted",
+    "createdAt": "2027-02-13T10:00:00Z",
+    "profile": {
+      "email": "judge_18@example.com",
+      "lastName": "Судья18",
+      "firstName": "Тест",
+      "country": "Сербия",
+      "city": "Город",
+      "position": "Юрист",
+      "company": "Компания"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true,
+    "judgeSlotIds": [
+      "2027-03-13-s2",
+      "2027-03-13-s3"
+    ]
+  },
+  {
+    "id": "r-p01",
+    "competitionId": "c-classic-2027-03",
+    "role": "Player",
+    "status": "submitted",
+    "createdAt": "2027-02-05T10:00:00Z",
+    "profile": {
+      "email": "player_01@example.com",
+      "lastName": "Игрок01",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true
+  },
+  {
+    "id": "r-p02",
+    "competitionId": "c-classic-2027-03",
+    "role": "Player",
+    "status": "submitted",
+    "createdAt": "2027-02-05T10:00:00Z",
+    "profile": {
+      "email": "player_02@example.com",
+      "lastName": "Игрок02",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true
+  },
+  {
+    "id": "r-p03",
+    "competitionId": "c-classic-2027-03",
+    "role": "Player",
+    "status": "submitted",
+    "createdAt": "2027-02-05T10:00:00Z",
+    "profile": {
+      "email": "player_03@example.com",
+      "lastName": "Игрок03",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true
+  },
+  {
+    "id": "r-p04",
+    "competitionId": "c-classic-2027-03",
+    "role": "Player",
+    "status": "submitted",
+    "createdAt": "2027-02-05T10:00:00Z",
+    "profile": {
+      "email": "player_04@example.com",
+      "lastName": "Игрок04",
+      "firstName": "Тест",
+      "country": "Россия",
+      "city": "Город"
+    },
+    "consentPersonalData": true,
+    "consentPhotoVideo": true
+  }
+]

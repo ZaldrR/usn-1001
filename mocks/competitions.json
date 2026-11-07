@@ -1,0 +1,172 @@
+[
+  {
+    "id": "c-classic-2027-03",
+    "title": "Кубок стратегии — классика (тест)",
+    "format": "classic",
+    "startsAt": "2027-03-13T06:00:00Z",
+    "endsAt": "2027-03-14T16:00:00Z",
+    "roles": [
+      {
+        "role": "Player",
+        "isOpen": true,
+        "closesAt": "2027-02-20T20:59:00Z"
+      },
+      {
+        "role": "Voter",
+        "isOpen": true,
+        "closesAt": "2027-03-11T20:59:00Z"
+      },
+      {
+        "role": "Adviser",
+        "isOpen": true,
+        "closesAt": "2027-03-11T20:59:00Z"
+      },
+      {
+        "role": "Viewer",
+        "isOpen": true,
+        "closesAt": "2027-03-11T20:59:00Z"
+      }
+    ],
+    "judgeSlots": [
+      {
+        "id": "2027-03-13-s1",
+        "start": "2027-03-13T06:00:00Z",
+        "end": "2027-03-13T08:00:00Z",
+        "requiredJudges": 7
+      },
+      {
+        "id": "2027-03-13-s2",
+        "start": "2027-03-13T08:00:00Z",
+        "end": "2027-03-13T10:00:00Z",
+        "requiredJudges": 7
+      },
+      {
+        "id": "2027-03-13-s3",
+        "start": "2027-03-13T10:00:00Z",
+        "end": "2027-03-13T12:00:00Z",
+        "requiredJudges": 7
+      },
+      {
+        "id": "2027-03-13-s4",
+        "start": "2027-03-13T12:00:00Z",
+        "end": "2027-03-13T14:00:00Z",
+        "requiredJudges": 7
+      },
+      {
+        "id": "2027-03-13-s5",
+        "start": "2027-03-13T14:00:00Z",
+        "end": "2027-03-13T16:00:00Z",
+        "requiredJudges": 7
+      }
+    ]
+  },
+  {
+    "id": "c-express-2027-06",
+    "title": "Экспресс-турнир (тест)",
+    "format": "express",
+    "startsAt": "2027-06-12T07:00:00Z",
+    "endsAt": "2027-06-12T13:00:00Z",
+    "roles": [
+      {
+        "role": "Player",
+        "isOpen": false,
+        "closesAt": "2027-05-20T20:59:00Z"
+      },
+      {
+        "role": "Voter",
+        "isOpen": true,
+        "closesAt": "2027-06-10T20:59:00Z"
+      },
+      {
+        "role": "Viewer",
+        "isOpen": true,
+        "closesAt": "2027-06-10T20:59:00Z"
+      }
+    ],
+    "judgeSlots": [
+      {
+        "id": "2027-06-12-s1",
+        "start": "2027-06-12T07:00:00Z",
+        "end": "2027-06-12T09:00:00Z",
+        "requiredJudges": 6
+      },
+      {
+        "id": "2027-06-12-s2",
+        "start": "2027-06-12T09:00:00Z",
+        "end": "2027-06-12T11:00:00Z",
+        "requiredJudges": 6
+      },
+      {
+        "id": "2027-06-12-s3",
+        "start": "2027-06-12T11:00:00Z",
+        "end": "2027-06-12T13:00:00Z",
+        "requiredJudges": 6
+      }
+    ]
+  },
+  {
+    "id": "c-team-2027-08",
+    "title": "Командный турнир (тест)",
+    "format": "team",
+    "startsAt": "2027-08-21T08:00:00Z",
+    "endsAt": "2027-08-21T14:00:00Z",
+    "roles": [
+      {
+        "role": "Player",
+        "isOpen": true,
+        "closesAt": "2027-08-01T20:59:00Z"
+      },
+      {
+        "role": "Voter",
+        "isOpen": true,
+        "closesAt": "2027-08-19T20:59:00Z"
+      },
+      {
+        "role": "Viewer",
+        "isOpen": true,
+        "closesAt": "2027-08-19T20:59:00Z"
+      }
+    ],
+    "judgeSlots": [
+      {
+        "id": "2027-08-21-s1",
+        "start": "2027-08-21T08:00:00Z",
+        "end": "2027-08-21T11:00:00Z",
+        "requiredJudges": 10
+      },
+      {
+        "id": "2027-08-21-s2",
+        "start": "2027-08-21T11:00:00Z",
+        "end": "2027-08-21T14:00:00Z",
+        "requiredJudges": 10
+      }
+    ]
+  },
+  {
+    "id": "c-broken-config",
+    "title": "Экспресс с ошибкой конфигурации (тест)",
+    "format": "express",
+    "startsAt": "2027-09-04T07:00:00Z",
+    "endsAt": "2027-09-04T10:00:00Z",
+    "roles": [
+      {
+        "role": "Voter",
+        "isOpen": true,
+        "closesAt": "2027-09-02T20:59:00Z"
+      },
+      {
+        "role": "Adviser",
+        "isOpen": true,
+        "closesAt": "2027-09-02T20:59:00Z"
+      }
+    ],
+    "judgeSlots": [
+      {
+        "id": "2027-09-04-s1",
+        "start": "2027-09-04T07:00:00Z",
+        "end": "2027-09-04T10:00:00Z",
+        "requiredJudges": 6
+      }
+    ]
+  }
+]

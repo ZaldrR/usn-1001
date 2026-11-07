@@ -1,0 +1,24 @@
+{% load static %}<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USN — регистрация на соревнования</title>
+  <link rel="stylesheet" href="{% static 'registration/style.css' %}">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>USN · регистрация на соревнования</h1>
+    <nav>
+      <a class="btn {% if tab == 'participant' %}active{% endif %}" href="{% url 'competition_list' %}">Участник</a>
+      <a class="btn {% if tab == 'organizer' %}active{% endif %}" href="{% url 'organizer' %}">Организатор</a>
+    </nav>
+    {% if use_mocks %}<span class="badge">тестовые данные</span>{% endif %}
+  </header>
+  {% block content %}{% endblock %}
+  <footer>Команда «Тысяча и один промт» · Лаборатория ИИ-решений</footer>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

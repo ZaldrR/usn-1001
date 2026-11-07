@@ -1,0 +1,27 @@
+{% extends "registration/base.html" %}
+{% block content %}
+<h2>Карта доступности судей</h2>
+<form method="get">
+  <select name="competition" onchange="this.form.submit()">
+    {% for x in comps %}<option value="{{ x.id }}" {% if c and x.id == c.id %}selected{% endif %}>{{ x.title }}</option>{% endfor %}
+  </select>
+</form>
+{% if c %}
+<p class="counts">Заявки: {% for label, n in counts %}{{ label }} — {{ n }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+<table>
+  <thead><tr><th>Слот</th><th>Доступно</th><th>Нужно</th><th>Судьи</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr class="{% if r.problem %}problem{% endif %}">
+      <td>{{ r.start|date:"d.m H:i" }}–{{ r.end|date:"H:i" }} UTC</td>
+      <td>{{ r.available }}</td><td>{{ r.required }}</td>
+      <td>{{ r.judges|join:", "|default:"—" }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">Для соревнования не заданы судейские слоты.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p class="hint">Красным — проблемные слоты: судей меньше, чем нужно. В спринте 3 здесь появится ИИ-помощник с расстановкой и советами.</p>
+{% endif %}
+{% endblock %}

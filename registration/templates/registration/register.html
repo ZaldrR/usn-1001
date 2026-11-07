@@ -1,0 +1,35 @@
+{% extends "registration/base.html" %}
+{% block content %}
+<a class="btn" href="{% url 'competition_list' %}">← Назад</a>
+<h2>{{ c.title }}</h2>
+{% if config_error %}
+  <p class="error">Ошибка конфигурации: {{ config_error }}. Форма не показывается — сообщите организатору.</p>
+{% else %}
+  {% if saved %}<p class="ok">Заявка №{{ saved.id }} сохранена, статус: «{{ saved.get_status_display|lower }}». Повторная отправка в ту же роль обновит эту заявку.</p>{% endif %}
+  {% if errors %}<ul class="error">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <label>{{ form.role.label }} {{ form.role }}</label>
+    {% for field in form.profile_fields %}<label>{{ field.label }} {{ field }}</label>{% endfor %}
+    <fieldset class="only-voter"><legend>{{ form.judge_slot_ids.label }}</legend>{{ form.judge_slot_ids }}</fieldset>
+    <label class="only-adviser">{{ form.advised_player_email.label }} {{ form.advised_player_email }}</label>
+    {% if c.format == "team" %}<label class="only-player">{{ form.team_partner_email.label }} {{ form.team_partner_email }}</label>{% endif %}
+    <label class="check">{{ form.consent_personal_data }} {{ form.consent_personal_data.label }}</label>
+    <label class="check">{{ form.consent_photo_video }} {{ form.consent_photo_video.label }}</label>
+    <button class="btn primary" type="submit">Отправить заявку</button>
+  </form>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+  // Показываем дополнительные поля только для нужной роли.
+  const role = document.getElementById("id_role");
+  function toggle() {
+    const v = role ? role.value : "";
+    document.querySelectorAll(".only-voter").forEach(e => e.hidden = v !== "Voter");
+    document.querySelectorAll(".only-adviser").forEach(e => e.hidden = v !== "Adviser");
+    document.querySelectorAll(".only-player").forEach(e => e.hidden = v !== "Player");
+  }
+  if (role) { role.addEventListener("change", toggle); toggle(); }
+</script>
+{% endblock %}

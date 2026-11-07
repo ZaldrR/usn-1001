@@ -1,0 +1,14 @@
+{% extends "registration/base.html" %}
+{% block content %}
+<h2>Соревнования с открытой регистрацией</h2>
+{% for it in items %}
+<div class="card">
+  <h3>{{ it.c.title }}</h3>
+  <p>{{ it.c.starts_at|date:"d.m.Y H:i" }} — {{ it.c.ends_at|date:"d.m.Y H:i" }} UTC · формат: {{ it.format }}</p>
+  <p>Открытые роли: {{ it.open_roles }}</p>
+  <a class="btn primary" href="{% url 'register' it.c.id %}">Зарегистрироваться</a>
+</div>
+{% empty %}
+<p>Сейчас нет соревнований с открытой регистрацией.</p>
+{% endfor %}
+{% endblock %}
