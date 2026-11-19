@@ -7,3 +7,9 @@ db.sqlite3
 # реальные (даже обезличенные) данные заказчика в репозиторий не кладём
 data/
 *.xlsx
+.env
+.env.*
+!.env.example
+# Local LLM benchmark results
+assignment/benchmark/results.csv
+assignment/benchmark/results/

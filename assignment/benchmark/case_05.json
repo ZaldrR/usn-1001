@@ -1,0 +1,24 @@
+
+{
+  "case_id": "USN-DEMO-05",
+  "problem": "Нехватка одного судьи с учётом пересекающихся по времени поединков",
+  "slot": {
+    "time": "16:00-16:30",
+    "required_judges": 3,
+    "assigned_judges": ["J01", "J02"]
+  },
+  "candidates": [
+    {
+      "id": "J03",
+      "available": true,
+      "rating": 4.9,
+      "busy_slots": ["16:00-16:30"]
+    },
+    {
+      "id": "J04",
+      "available": true,
+      "rating": 4.1,
+      "busy_slots": []
+    }
+  ]
+}
