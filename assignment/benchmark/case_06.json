@@ -1,0 +1,30 @@
+
+{
+  "case_id": "USN-DEMO-06",
+  "problem": "Не хватает одного судьи, но у части кандидатов пересекаются временные интервалы",
+  "slot": {
+    "time": "16:00-16:30",
+    "required_judges": 3,
+    "assigned_judges": ["J01", "J02"]
+  },
+  "candidates": [
+    {
+      "id": "J03",
+      "available": true,
+      "rating": 4.9,
+      "busy_slots": ["16:15-16:45"]
+    },
+    {
+      "id": "J04",
+      "available": true,
+      "rating": 4.2,
+      "busy_slots": ["15:30-16:00"]
+    },
+    {
+      "id": "J05",
+      "available": true,
+      "rating": 4.7,
+      "busy_slots": ["16:30-17:00"]
+    }
+  ]
+}

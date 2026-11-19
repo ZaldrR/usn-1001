@@ -1,0 +1,22 @@
+
+{
+  "case_id": "USN-DEMO-02",
+  "problem": "Не хватает одного судьи",
+  "slot": {
+    "time": "13:00-13:30",
+    "required_judges": 3,
+    "assigned_judges": ["J01", "J02"]
+  },
+  "candidates": [
+    {
+      "id": "J03",
+      "available": false,
+      "rating": 4.8
+    },
+    {
+      "id": "J04",
+      "available": false,
+      "rating": 4.9
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+
+{
+  "case_id": "USN-DEMO-07",
+  "problem": "Проверка необходимости дополнительного назначения",
+  "slot": {
+    "time": "17:00-17:30",
+    "required_judges": 3,
+    "assigned_judges": ["J01", "J02", "J03"]
+  },
+  "candidates": [
+    {
+      "id": "J04",
+      "available": true,
+      "rating": 4.9,
+      "busy_slots": []
+    },
+    {
+      "id": "J05",
+      "available": true,
+      "rating": 4.7,
+      "busy_slots": []
+    }
+  ]
+}
