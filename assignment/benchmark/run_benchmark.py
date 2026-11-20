@@ -11,7 +11,12 @@ import truststore
 from dotenv import load_dotenv
 from gigachat import GigaChat
 
-from validators import validate_recommendation
+try:
+    from .validators import validate_recommendation
+    from .prompt import PROMPT_TEMPLATE, PROMPT_VERSION, build_prompt
+except ImportError:
+    from validators import validate_recommendation
+    from prompt import PROMPT_TEMPLATE, PROMPT_VERSION, build_prompt
 
 
 # SSL
@@ -45,81 +50,6 @@ REPEATS = 3
 # None = все case_*.json
 # Например: ["case_07.json"]
 SELECTED_CASES = None
-
-PROMPT_VERSION = "H07-v1.0"
-
-
-# ==========================================
-# ПРОМПТ
-# ==========================================
-
-PROMPT_TEMPLATE = """
-Ты ИИ-помощник организатора соревнований USN.
-
-Твоя задача — определить, нужен ли дополнительный
-судья для указанного слота, и при необходимости
-предложить одного допустимого кандидата.
-
-Правила:
-
-1. Используй только судей из массива candidates.
-
-2. Судья должен иметь available = true.
-
-3. Нельзя повторно назначать судей,
-   которые уже есть в assigned_judges.
-
-4. Учитывай busy_slots.
-   Запрещено назначать судью, если его
-   занятость хотя бы частично пересекается
-   с текущим временным интервалом.
-
-5. Проверь required_judges и количество
-   уже назначенных судей.
-   Если слот заполнен, новое назначение не нужно.
-
-6. Не придумывай судей, оценки,
-   характеристики или ограничения.
-
-7. Если допустимых кандидатов нет
-   или дополнительный судья не требуется,
-   верни judge_id = null.
-
-8. Если подходят несколько кандидатов,
-   выбери одного и кратко объясни выбор.
-   Не придумывай критерии квалификации.
-
-Верни только корректный JSON.
-Без Markdown и текста вне JSON.
-
-Формат ответа:
-
-{{
-  "judge_id": null,
-  "reason": "Краткое объяснение"
-}}
-
-Если судья выбран, judge_id должен быть строкой
-с его идентификатором.
-
-Если назначение не требуется или невозможно,
-используй JSON null.
-
-Исходные данные:
-{case_json}
-"""
-
-
-def build_prompt(case_data):
-    case_json = json.dumps(
-        case_data,
-        ensure_ascii=False,
-        indent=2
-    )
-
-    return PROMPT_TEMPLATE.format(
-        case_json=case_json
-    )
 
 
 # ==========================================
