@@ -1,6 +1,8 @@
 from django.conf import settings
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import render
+
+from assignment.solver import assign_judges, h07_payload
 
 from . import usn_client
 from .domain.availability import judge_availability
@@ -58,15 +60,31 @@ def register(request, competition_id):
 
 
 def organizer(request):
-    """Панель организатора: карта доступности судей (ТЗ п. 5.4, критерий 6)."""
+    """Карта доступности, жадная расстановка и выгрузка H-07."""
     comps = usn_client.get_open_competitions()
     selected = request.GET.get("competition") or (comps[0].id if comps else "")
     c = next((x for x in comps if x.id == selected), None)
-    rows, counts = [], []
+    schedule, counts = [], []
     if c:
         regs = [r.to_data() for r in Registration.objects.filter(competition_id=c.id)]
         rows = judge_availability(c, regs)
+        ratings = {
+            email.strip().lower(): score
+            for email, score in getattr(settings, "USN_JUDGE_RATINGS", {}).items()
+        }
+        assignments = assign_judges(rows, ratings)
+        if request.GET.get("export") == "h07":
+            try:
+                payload = h07_payload(c.id, rows, assignments, ratings)
+            except ValueError as error:
+                return JsonResponse({"error": str(error)}, status=400)
+            response = JsonResponse(payload, safe=False, json_dumps_params={"ensure_ascii": False})
+            response["Content-Disposition"] = 'attachment; filename="h07_cases.json"'
+            return response
+        schedule = [(row, assignments[row.slot_id]) for row in rows]
         counts = [(ROLE_LABEL[role], sum(1 for r in regs if r.role == role and r.status != "withdrawn"))
                   for role in ROLE_LABEL]
+    elif request.GET.get("export") == "h07":
+        raise Http404("Соревнование не найдено")
     return render(request, "registration/organizer.html",
-                  _ctx(comps=comps, c=c, rows=rows, counts=counts, tab="organizer"))
+                  _ctx(comps=comps, c=c, schedule=schedule, counts=counts, tab="organizer"))

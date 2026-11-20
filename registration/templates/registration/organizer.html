@@ -8,20 +8,22 @@
 </form>
 {% if c %}
 <p class="counts">Заявки: {% for label, n in counts %}{{ label }} — {{ n }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+<p><a href="?competition={{ c.id|urlencode }}&amp;export=h07">Скачать проблемные слоты для H-07</a></p>
 <table>
-  <thead><tr><th>Слот</th><th>Доступно</th><th>Нужно</th><th>Судьи</th></tr></thead>
+  <thead><tr><th>Слот</th><th>Доступно</th><th>Нужно</th><th>Доступные судьи</th><th>Расстановка</th></tr></thead>
   <tbody>
-  {% for r in rows %}
-    <tr class="{% if r.problem %}problem{% endif %}">
+  {% for r, assigned in schedule %}
+    <tr class="{% if assigned|length < r.required %}problem{% endif %}">
       <td>{{ r.start|date:"d.m H:i" }}–{{ r.end|date:"H:i" }} UTC</td>
       <td>{{ r.available }}</td><td>{{ r.required }}</td>
       <td>{{ r.judges|join:", "|default:"—" }}</td>
+      <td>{{ assigned|join:", "|default:"—" }}</td>
     </tr>
   {% empty %}
-    <tr><td colspan="4">Для соревнования не заданы судейские слоты.</td></tr>
+    <tr><td colspan="5">Для соревнования не заданы судейские слоты.</td></tr>
   {% endfor %}
   </tbody>
 </table>
-<p class="hint">Красным — проблемные слоты: судей меньше, чем нужно. В спринте 3 здесь появится ИИ-помощник с расстановкой и советами.</p>
+<p class="hint">Красным выделены слоты, в которых после расстановки остались свободные места.</p>
 {% endif %}
 {% endblock %}
