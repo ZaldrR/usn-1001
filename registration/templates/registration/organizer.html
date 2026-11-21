@@ -10,20 +10,21 @@
 <p class="counts">Заявки: {% for label, n in counts %}{{ label }} — {{ n }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
 <p><a href="?competition={{ c.id|urlencode }}&amp;export=h07">Скачать проблемные слоты для H-07</a></p>
 <table>
-  <thead><tr><th>Слот</th><th>Доступно</th><th>Нужно</th><th>Доступные судьи</th><th>Расстановка</th></tr></thead>
+  <thead><tr><th>Слот</th><th>Доступно</th><th>Нужно основных</th><th>Доступные судьи</th><th>Основные</th><th>Резерв</th></tr></thead>
   <tbody>
-  {% for r, assigned in schedule %}
-    <tr class="{% if assigned|length < r.required %}problem{% endif %}">
+  {% for r, assigned, problem in schedule %}
+    <tr class="{% if problem %}problem{% endif %}">
       <td>{{ r.start|date:"d.m H:i" }}–{{ r.end|date:"H:i" }} UTC</td>
       <td>{{ r.available }}</td><td>{{ r.required }}</td>
       <td>{{ r.judges|join:", "|default:"—" }}</td>
-      <td>{{ assigned|join:", "|default:"—" }}</td>
+      <td>{{ assigned.main|join:", "|default:"—" }}</td>
+      <td>{{ assigned.reserve|join:", "|default:"—" }}</td>
     </tr>
   {% empty %}
-    <tr><td colspan="5">Для соревнования не заданы судейские слоты.</td></tr>
+    <tr><td colspan="6">Для соревнования не заданы судейские слоты.</td></tr>
   {% endfor %}
   </tbody>
 </table>
-<p class="hint">Красным выделены слоты, в которых после расстановки остались свободные места.</p>
+<p class="hint">Красным выделены слоты, где не хватает основных судей или нет резервного.</p>
 {% endif %}
 {% endblock %}

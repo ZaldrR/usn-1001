@@ -1,9 +1,19 @@
 """Жадная расстановка по карте доступности и выгрузка H-07."""
 
 from collections import defaultdict
+from dataclasses import dataclass, field
 from datetime import datetime, time, timedelta, timezone
 
 from registration.domain.availability import SlotAvailability
+
+
+@dataclass
+class SlotAssignment:
+    main: list[str] = field(default_factory=list)
+    reserve: list[str] = field(default_factory=list)
+
+    def is_problem(self, required: int) -> bool:
+        return len(self.main) < required or not self.reserve
 
 
 def _overlap(a: SlotAvailability, b: SlotAvailability) -> bool:
@@ -16,23 +26,37 @@ def _available(row: SlotAvailability) -> set[str]:
 
 def assign_judges(
     rows: list[SlotAvailability], ratings: dict[str, float],
-) -> dict[str, list[str]]:
-    """Заполняет сначала окна с меньшим числом кандидатов."""
+    *, reserve_limit: int = 3,
+) -> dict[str, SlotAssignment]:
+    """Сначала заполняет основные места, затем назначает резерв по одному за проход."""
     available = {row.slot_id: _available(row) for row in rows}
     ordered = sorted(rows, key=lambda row: (len(available[row.slot_id]), row.start, row.slot_id))
     occupied = defaultdict(list)
-    assignments = {}
-    for row in ordered:
-        candidates = [
+    assignments = {row.slot_id: SlotAssignment() for row in rows}
+
+    def free_candidates(row: SlotAvailability) -> list[str]:
+        return [
             email for email in available[row.slot_id]
             if not any(_overlap(row, other) for other in occupied[email])
         ]
+
+    def pick(row: SlotAvailability, count: int) -> list[str]:
+        candidates = free_candidates(row)
         candidates.sort(key=lambda email: (email not in ratings, -ratings.get(email, 0),
                                             len(occupied[email]), email))
-        assigned = candidates[:row.required]
-        assignments[row.slot_id] = assigned
+        assigned = candidates[:count]
         for email in assigned:
             occupied[email].append(row)
+        return assigned
+
+    for row in ordered:
+        assignments[row.slot_id].main = pick(row, row.required)
+
+    reserve_order = sorted(ordered, key=lambda row: len(free_candidates(row)))
+    for _ in range(reserve_limit):
+        for row in reserve_order:
+            assignments[row.slot_id].reserve.extend(pick(row, 1))
+
     return assignments
 
 
@@ -44,7 +68,7 @@ def _time_range(start: datetime, end: datetime, next_day: datetime) -> str:
 def h07_payload(
     competition_id: str,
     rows: list[SlotAvailability],
-    assignments: dict[str, list[str]],
+    assignments: dict[str, SlotAssignment],
     ratings: dict[str, float],
 ) -> dict | list[dict]:
     """Представляет оставшиеся дефициты без персональных данных."""
@@ -52,15 +76,28 @@ def h07_payload(
     judge_ids = {email: f"J{index:02d}" for index, email in enumerate(judges, 1)}
     occupied = defaultdict(list)
     for row in rows:
-        for email in assignments[row.slot_id]:
+        panel = assignments[row.slot_id]
+        for email in panel.main + panel.reserve:
             occupied[email].append(row)
 
     cases = []
     for row in rows:
-        assigned = assignments[row.slot_id]
-        missing = row.required - len(assigned)
-        if missing <= 0:
+        panel = assignments[row.slot_id]
+        if not panel.is_problem(row.required):
             continue
+        assigned_in_slot = set(panel.main + panel.reserve)
+        missing_main = row.required - len(panel.main)
+        if missing_main > 0:
+            required = row.required
+            assigned = panel.main
+            problem = f"Не хватает основных судей: {missing_main}"
+            if not panel.reserve:
+                problem += ". Нет резервного судьи"
+        else:
+            required = 1
+            assigned = panel.reserve
+            problem = "Нет резервного судьи"
+
         start = row.start.astimezone(timezone.utc)
         end = row.end.astimezone(timezone.utc)
         day = datetime.combine(start.date(), time.min, timezone.utc)
@@ -71,7 +108,7 @@ def h07_payload(
         available = _available(row)
         candidates = []
         for email in judges:
-            if email in assigned:
+            if email in assigned_in_slot:
                 continue
             busy_slots = {
                 _time_range(max(other.start.astimezone(timezone.utc), day),
@@ -86,12 +123,12 @@ def h07_payload(
             })
         cases.append({
             "case_id": f"USN-{competition_id}-{row.slot_id}",
-            "problem": "Не хватает одного судьи" if missing == 1 else f"Не хватает судей: {missing}",
+            "problem": problem,
             "slot": {
                 "id": row.slot_id,
                 "date": start.date().isoformat(),
                 "time": _time_range(start, end, next_day),
-                "required_judges": row.required,
+                "required_judges": required,
                 "assigned_judges": [judge_ids[email] for email in assigned],
             },
             "candidates": candidates,

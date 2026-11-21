@@ -72,7 +72,8 @@ def organizer(request):
             email.strip().lower(): score
             for email, score in getattr(settings, "USN_JUDGE_RATINGS", {}).items()
         }
-        assignments = assign_judges(rows, ratings)
+        reserve_limit = 1 if c.format == "express" else 3
+        assignments = assign_judges(rows, ratings, reserve_limit=reserve_limit)
         if request.GET.get("export") == "h07":
             try:
                 payload = h07_payload(c.id, rows, assignments, ratings)
@@ -81,7 +82,9 @@ def organizer(request):
             response = JsonResponse(payload, safe=False, json_dumps_params={"ensure_ascii": False})
             response["Content-Disposition"] = 'attachment; filename="h07_cases.json"'
             return response
-        schedule = [(row, assignments[row.slot_id]) for row in rows]
+        for row in rows:
+            panel = assignments[row.slot_id]
+            schedule.append((row, panel, panel.is_problem(row.required)))
         counts = [(ROLE_LABEL[role], sum(1 for r in regs if r.role == role and r.status != "withdrawn"))
                   for role in ROLE_LABEL]
     elif request.GET.get("export") == "h07":
